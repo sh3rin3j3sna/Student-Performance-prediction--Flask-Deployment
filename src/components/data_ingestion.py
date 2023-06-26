@@ -9,6 +9,9 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components.data_transformation import DataTransformation
+
+from src.components.data_transformation import DataTransformationConfig
 
 
 #whenever we perform data ingestion, there should be user specified inputs, and will be saved in this class
@@ -57,4 +60,7 @@ class DataIngestion:
 #initiating and running 
 if __name__ == "__main__":
     obj = DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data, test_data = obj.initiate_data_ingestion()
+
+    data_transformation = DataTransformation()
+    data_transformation.initiate_data_transformation(train_data,test_data)
